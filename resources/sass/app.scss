@@ -6,7 +6,11 @@
 @import 'variables';
 
 // Bootstrap
-@import '~bootstrap/scss/bootstrap';
+//@import '~bootstrap/scss/bootstrap';
+
+//Architectui
+@import 'architectui/base';
+
 
 .navbar-laravel {
   background-color: #fff;

@@ -1,33 +1,58 @@
 
-/**
- * First we will load all of this project's JavaScript dependencies which
- * includes Vue and other libraries. It is a great starting point when
- * building robust, powerful web applications using Vue and Laravel.
- */
-
 require('./bootstrap');
 
 window.Vue = require('vue');
 
-/**
- * The following block of code may be used to automatically register your
- * Vue components. It will recursively scan this directory for the Vue
- * components and automatically register them with their "basename".
- *
- * Eg. ./components/ExampleComponent.vue -> <example-component></example-component>
- */
+ import vue from 'vue';
 
-// const files = require.context('./', true, /\.vue$/i)
-// files.keys().map(key => Vue.component(key.split('/').pop().split('.')[0], files(key).default))
+import BootstrapVue from 'bootstrap-vue';
+import VueRouter from 'vue-router';
 
-Vue.component('example-component', require('./components/ExampleComponent.vue').default);
+Vue.use(BootstrapVue);
+Vue.use(VueRouter);
 
-/**
- * Next, we will create a fresh Vue application instance and attach it to
- * the page. Then, you may begin adding components to this application
- * or customize the JavaScript scaffolding to fit your unique needs.
- */
+import mainApp from './components/MainApp.vue';
+import beranda from './components/Beranda/beranda.vue';
+import Admin from './components/Admin/admin.vue';
+import Chat from './components/Chats/chats.vue';
+import profile from './components/profile/profile.vue';
+import Admin_tambah from './components/Admin/admin_add.vue';
+
+const router = new VueRouter({
+	mode: 'history',
+  routes: [
+  	{
+			path: '/',
+			name: 'beranda',
+			component: beranda
+		},
+		{
+			path: '/chat',
+			name: 'chat',
+			component: Chat
+		},
+		{
+			path: '/admin',
+			name: 'admin',
+			component: Admin
+		},
+		{
+			path: '/admin/tambah',
+			name: 'admin.tambah',
+			component: Admin_tambah
+		},
+		{
+			path: '/profile',
+			name: 'profile',
+			component: profile
+		}
+  ]
+});
 
 const app = new Vue({
-    el: '#app'
+    el: '#app',
+    router,
+    components: {
+    	mainApp
+    }
 });
